@@ -1,6 +1,9 @@
 <!-- <script setup>
-  import { ref } from 'vue';
-  const loop = ref(0)
+  import { reactive, ref } from 'vue';
+  const loop = ref(0) // cocok untuk nyimpen value tunggal
+  const object = reactive({
+    loop:0
+  }) // cocok untuk nyimpen value object
 </script> -->
 
 <script>
@@ -8,7 +11,7 @@
 
     data(){
       return {
-        loop:0,
+        loop:1,
         image:"ending.png",
         hidden:true,
       }
@@ -35,8 +38,16 @@
 
 <template>
   <main>
-    <h1 @click="tambah" >Hello Word {{ loop }}</h1>
+    <h1 @click="tambah" :class="{'text-danger':loop % 2 === 0}" :style="{'font-size':20 * loop + 'px'}" >Klik saya yang ke {{ loop - 1 }}</h1>
     <h1 v-if="!hidden" >Aku bersembunyi</h1>
     <img @click="toggleHidden" v-bind:src="`/images/${image}`" />
   </main>
 </template>
+
+<style scoped>
+  .text-danger{
+    color:red
+  }
+
+
+</style>
