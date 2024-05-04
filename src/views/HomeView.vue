@@ -1,40 +1,25 @@
-<!-- <script setup>
+<script setup >
   import { reactive, ref } from 'vue';
-  const loop = ref(0) // cocok untuk nyimpen value tunggal
-  const object = reactive({
-    loop:0
-  }) // cocok untuk nyimpen value object
-</script> -->
+  import local from '@/components/local.vue';
 
-<script>
-  export default {
+  const loop = ref(1)
+  const image = ref("ending.png")
+  const hidden = ref(true)
+  const input = ref("")
+  const kumpulanBuah = reactive(["anggur","jeruk","mangga"])
 
-    data(){
-      return {
-        loop:1,
-        image:"ending.png",
-        hidden:true,
-        kumpulanBuah:["anggur","jeruk","mangga"]
-      }
-    },
-
-    methods:{
-      tambah(){
-        this.loop++
-      },
-      toggleHidden(){
-        this.hidden = !this.hidden;
-      }
-    },
-
-    created(){  
-      console.log("first")
-    },
-
-    mounted(){
-      console.log("Hai")
-    }
+  function tambah () {
+    loop.value++
   }
+
+  function toggleHidden () {
+    hidden.value = !hidden.value
+  }
+
+  function print (text) {
+    console.log(text)
+  }
+
 </script>
 
 <template>
@@ -43,10 +28,14 @@
     <h1 v-if="!hidden" >Baa</h1>
     <h1 v-else  >Ciluk</h1>
     <ul>
-      <li v-for="(buah,index) in kumpulanBuah" >
+      <li v-for="(buah,index) in kumpulanBuah" :key="buah" >
          saya {{ buah }} nomor urut {{ index }}
       </li>
     </ul>
+    <input type="text" v-model="input" >
+    <h1>{{ input }}</h1>
+    <global/>
+    <local text="cihuyyy" @print="print" />
     <img @click="toggleHidden" v-bind:src="`/images/${image}`" />
   </main>
 </template>
