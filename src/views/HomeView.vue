@@ -35,7 +35,14 @@
     <input type="text" v-model="input" >
     <h1>{{ input }}</h1>
     <global/>
-    <local text="cihuyyy" @print="print" />
+    <local text="cihuyyy" v-model="input"@print="print" >
+      <template #atas="props" >
+        <h3>ini slot {{props.text}}</h3>
+      </template>
+      <template #bawah >
+        <h3>ini slot bawah</h3>
+      </template>
+    </local>
     <img @click="toggleHidden" v-bind:src="`/images/${image}`" />
   </main>
 </template>
