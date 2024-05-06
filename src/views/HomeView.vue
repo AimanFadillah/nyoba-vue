@@ -1,7 +1,8 @@
 <script setup >
-  import { reactive, ref } from 'vue';
+  import { inject, reactive, ref } from 'vue';
   import local from '@/components/local.vue';
 
+  const pesan = inject("pesan")
   const loop = ref(1)
   const image = ref("ending.png")
   const hidden = ref(true)
