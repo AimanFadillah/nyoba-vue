@@ -1,8 +1,7 @@
 <script setup >
-  import { inject, reactive, ref } from 'vue';
+  import { reactive, ref } from 'vue';
   import local from '@/components/local.vue';
 
-  const pesan = inject("pesan")
   const loop = ref(1)
   const image = ref("ending.png")
   const hidden = ref(true)
@@ -44,6 +43,7 @@
         <h3>ini slot bawah</h3>
       </template>
     </local>
+    <h4>{{ $iniPlugin("aiman") }}</h4>
     <img @click="toggleHidden" v-bind:src="`/images/${image}`" />
   </main>
 </template>
