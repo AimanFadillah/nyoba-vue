@@ -27,7 +27,7 @@
   <main>
     <h1 @click="tambah" :class="{'text-danger':loop % 2 === 0}" :style="{'font-size':20 * loop + 'px'}" >Klik saya yang ke {{ loop - 1 }}</h1>
     <componetTeleport />
-    <RouterLink to="/about" >test</RouterLink>
+    <RouterLink to="/about" >About</RouterLink>
     <h1 v-if="!hidden" >Baa</h1>
     <h1 v-else  >Ciluk</h1>
     <ul>
